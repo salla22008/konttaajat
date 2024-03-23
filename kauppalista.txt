@@ -2,3 +2,4 @@ Kirjoitetaan tähän työvaiheet
 Tietokanta luotu -Jertta
 Käyttöliittymän suunnittelu - Jertta
 Ominaisuus käyttäjätilin luomiselle -Niko
+Käyttöliittymän testaus -Salla
