@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kauppalista</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    #app {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    .deleteButton {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <h2>Kauppalista</h2>
+    <!-- Text input kenttä johon käyttäjä voi syöttää tuotteen nimen -->
+    <input type="text" id="itemInput" placeholder="Lisää tuote...">
+    <!-- Painike, jolla käyttäjä voi lisätä tuotteen listaan -->
+    <button onclick="addItem()">Lisää</button>
+    <!-- Lista, johon lisätyt tuotteet näytetään -->
+    <ul id="itemList">
+    </ul>
+</div>
+
+<script>
+    function addItem() {
+        // Haetaan tekstikentän ja listan viittaukset
+        var input = document.getElementById("itemInput");
+        var itemList = document.getElementById("itemList");
+        // Haetaan syötetty tuote tekstikentästä
+        var item = input.value;
+        // Tarkistetaan, ettei syötetty tuote ole tyhjä
+        if (item === '') {
+            alert("Anna tuotteen nimi.");
+            return;
+        }
+        // Luodaan uusi listaelementti ja asetetaan siihen syötetty tuote
+        var li = document.createElement("li");
+        li.textContent = item;
+        // Luodaan "Poista" -painike, jolla voi poistaa tuotteen listalta
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Poista";
+        deleteButton.className = "deleteButton";
+        // Asetetaan poistopainikkeelle toiminto, joka poistaa kyseisen listaelementin
+        deleteButton.onclick = function() {
+            itemList.removeChild(li);
+        };
+        // Lisätään poistopainike listaelementtiin
+        li.appendChild(deleteButton);
+        // Lisätään listaelementti listaan
+        itemList.appendChild(li);
+        // Tyhjennetään tekstikenttä valmiiksi seuraavaa syötettä varten
+        input.value = '';
+    }
+</script>
+</body>
+</html>
