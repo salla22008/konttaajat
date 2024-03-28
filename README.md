@@ -1,2 +1,2 @@
 # konttaajat
-Lab 1 harjoitus
+Lab harjoitukset
